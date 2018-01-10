@@ -4,12 +4,14 @@ import TicTacToe from "./components/TicTacToe";
 
 const Title = styled.h1`
   color: rgb(131, 79, 44);
+  font-size: 1.5em;
+  line-height: 1;
+  margin: 0;
   text-align: center;
 `;
 
 const Game = styled.div`
   height: 80vw;
-  margin: auto;
   overflow: auto;
   width: 80vw;
 
@@ -22,6 +24,9 @@ const Game = styled.div`
 const A = styled.a`
   color: rgb(131, 79, 44);
   display: block;
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0;
   text-align: center;
   transition: 0.2s color;
 

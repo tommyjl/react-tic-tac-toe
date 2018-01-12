@@ -5,6 +5,10 @@ import Grid from "./Grid";
 class TicTacToe extends Component {
   constructor(props) {
     super(props);
+
+    this.updateStatus = props.updateStatus;
+    this.updateStatus("Next: X");
+
     this.state = {
       cells: Array(9).fill(""),
       player: "X"
@@ -19,9 +23,13 @@ class TicTacToe extends Component {
       cells[index] = prevState.player;
 
       const playerHasWon = this.checkForWinner(cells);
-      if (playerHasWon) return { cells };
+      if (playerHasWon) {
+        this.updateStatus(`${this.state.player} is the winner!`);
+        return { cells };
+      }
 
       const player = prevState.player === "X" ? "O" : "X";
+      this.updateStatus(`Next: ${player}`);
 
       return { cells, player };
     });

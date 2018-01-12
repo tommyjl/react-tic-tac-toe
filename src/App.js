@@ -35,13 +35,26 @@ const A = styled.a`
   }
 `;
 
+const Status = styled.div``;
+
 class App extends Component {
+  constructor() {
+    super();
+    this.state = { status: undefined };
+    this.updateStatus = this.updateStatus.bind(this);
+  }
+
+  updateStatus(message) {
+    this.setState({ status: message });
+  }
+
   render() {
     return (
       <Fragment>
         <Title>TicTacToe</Title>
+        <Status>{this.state.status}</Status>
         <Game>
-          <TicTacToe />
+          <TicTacToe updateStatus={this.updateStatus} />
         </Game>
         <A href="">Source code</A>
       </Fragment>

@@ -15,17 +15,13 @@ const GridStyle = styled.div`
   width: 90%;
 `;
 
-const Grid = () => (
+const Grid = ({ cells }) => (
   <GridStyle>
-    <Cell />
-    <Cell altColor />
-    <Cell />
-    <Cell altColor />
-    <Cell />
-    <Cell altColor />
-    <Cell />
-    <Cell altColor />
-    <Cell />
+    {cells.map((text, index) => (
+      <Cell key={index} onClick={() => console.log(index)} altColor={index % 2}>
+        {text}
+      </Cell>
+    ))}
   </GridStyle>
 );
 

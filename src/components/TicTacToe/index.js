@@ -6,7 +6,8 @@ class TicTacToe extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cells: Array(9).fill("")
+      cells: Array(9).fill(""),
+      player: "X"
     };
 
     this.updateCell = this.updateCell.bind(this);
@@ -15,8 +16,11 @@ class TicTacToe extends Component {
   updateCell(index) {
     this.setState(prevState => {
       const cells = prevState.cells.slice();
-      cells[index] = "x";
-      return { cells };
+      cells[index] = prevState.player;
+
+      const player = prevState.player === "X" ? "O" : "X";
+
+      return { cells, player };
     });
   }
 

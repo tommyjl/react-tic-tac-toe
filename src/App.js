@@ -27,7 +27,7 @@ const A = styled.a`
   display: block;
   font-size: 1em;
   line-height: 1.5;
-  margin: 0;
+  margin-top: 1em;
   text-align: center;
   transition: 0.2s color;
 
@@ -36,7 +36,13 @@ const A = styled.a`
   }
 `;
 
-const Status = styled.div``;
+const Status = styled.h2`
+  color: rgb(131, 79, 44);
+  margin: 0;
+  font-size: 1.25em;
+  line-height: 1.2;
+  font-weight: normal;
+`;
 
 class App extends Component {
   constructor() {

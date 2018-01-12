@@ -11,6 +11,7 @@ class TicTacToe extends Component {
 
     this.state = {
       cells: Array(9).fill(""),
+      gameFinished: false,
       player: "X"
     };
 
@@ -21,13 +22,14 @@ class TicTacToe extends Component {
     this.setState(prevState => {
       const cells = prevState.cells.slice();
       if (cells[index] !== "") return prevState;
+      if (this.state.gameFinished) return prevState;
 
       cells[index] = prevState.player;
 
       const playerHasWon = this.checkForWinner(cells);
       if (playerHasWon) {
         this.updateStatus(`${this.state.player} is the winner!`);
-        return { cells };
+        return { cells, gameFinished: true };
       }
 
       const player = prevState.player === "X" ? "O" : "X";

@@ -8,11 +8,21 @@ class TicTacToe extends Component {
     this.state = {
       cells: Array(9).fill("")
     };
+
+    this.updateCell = this.updateCell.bind(this);
+  }
+
+  updateCell(index) {
+    this.setState(prevState => {
+      const cells = prevState.cells.slice();
+      cells[index] = "x";
+      return { cells };
+    });
   }
 
   render() {
     const { cells } = this.state;
-    return <Grid cells={cells} />;
+    return <Grid cells={cells} updateCell={this.updateCell} />;
   }
 }
 

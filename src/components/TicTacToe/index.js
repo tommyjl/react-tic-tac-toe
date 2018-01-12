@@ -39,30 +39,23 @@ class TicTacToe extends Component {
   }
 
   checkForWinner(cells) {
-    const check = cells => {
-      if (!cells[0]) return false;
-      if (cells[0] === cells[1] && cells[1] === cells[2]) return true;
+    const check = (cells, firstCell, secondCell, thirdCell) => {
+      if (cells[firstCell] === "") return false;
+      if (
+        cells[firstCell] === cells[secondCell] &&
+        cells[secondCell] === cells[thirdCell]
+      )
+        return true;
     };
 
-    const rows = [
-      [cells[0], cells[1], cells[2]],
-      [cells[3], cells[4], cells[5]],
-      [cells[6], cells[7], cells[8]]
-    ];
-    const columns = [
-      [cells[0], cells[3], cells[6]],
-      [cells[1], cells[4], cells[7]],
-      [cells[2], cells[5], cells[8]]
-    ];
-    const diagonals = [
-      [cells[0], cells[4], cells[8]],
-      [cells[2], cells[4], cells[6]]
-    ];
+    const rows = [[0, 1, 2], [3, 4, 5], [6, 7, 8]];
+    const columns = [[0, 3, 6], [1, 4, 7], [2, 5, 8]];
+    const diagonals = [[0, 4, 8], [2, 4, 6]];
 
     const rules = [...rows, ...columns, ...diagonals];
 
     for (let i = 0; i < rules.length; i++) {
-      if (check(rules[i])) return true;
+      if (check(cells, ...rules[i])) return true;
     }
 
     return false;

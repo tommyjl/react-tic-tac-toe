@@ -20,6 +20,8 @@ class TicTacToe extends Component {
   updateCell(index) {
     this.setState(prevState => {
       const cells = prevState.cells.slice();
+      if (cells[index] !== "") return prevState;
+
       cells[index] = prevState.player;
 
       const playerHasWon = this.checkForWinner(cells);

@@ -7,6 +7,7 @@ const Cell = styled.div`
   margin: 1px;
   padding: 1em;
   transition: 0.15s transform;
+  user-select: none;
 
   &:hover {
     cursor: pointer;

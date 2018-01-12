@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import styled from "styled-components";
 import Grid from "./Grid";
 
 class TicTacToe extends Component {

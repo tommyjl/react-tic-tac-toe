@@ -64,7 +64,7 @@ class App extends Component {
           <TicTacToe updateStatus={this.updateStatus} />
         </GameWrapper>
         <ReloadPageButton text="Clear board" />
-        <A href="">Source code</A>
+        <A href="https://github.com/tommyjl/react-tic-tac-toe">Source code</A>
       </Fragment>
     );
   }

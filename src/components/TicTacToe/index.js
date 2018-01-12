@@ -18,10 +18,43 @@ class TicTacToe extends Component {
       const cells = prevState.cells.slice();
       cells[index] = prevState.player;
 
+      const playerHasWon = this.checkForWinner(cells);
+      if (playerHasWon) return { cells };
+
       const player = prevState.player === "X" ? "O" : "X";
 
       return { cells, player };
     });
+  }
+
+  checkForWinner(cells) {
+    const check = cells => {
+      if (!cells[0]) return false;
+      if (cells[0] === cells[1] && cells[1] === cells[2]) return true;
+    };
+
+    const rows = [
+      [cells[0], cells[1], cells[2]],
+      [cells[3], cells[4], cells[5]],
+      [cells[6], cells[7], cells[8]]
+    ];
+    const columns = [
+      [cells[0], cells[3], cells[6]],
+      [cells[1], cells[4], cells[7]],
+      [cells[2], cells[5], cells[8]]
+    ];
+    const diagonals = [
+      [cells[0], cells[4], cells[8]],
+      [cells[2], cells[4], cells[6]]
+    ];
+
+    const rules = [...rows, ...columns, ...diagonals];
+
+    for (let i = 0; i < rules.length; i++) {
+      if (check(rules[i])) return true;
+    }
+
+    return false;
   }
 
   render() {

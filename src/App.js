@@ -10,7 +10,7 @@ const Title = styled.h1`
   text-align: center;
 `;
 
-const Game = styled.div`
+const GameWrapper = styled.div`
   height: 80vw;
   overflow: auto;
   width: 80vw;
@@ -53,9 +53,9 @@ class App extends Component {
       <Fragment>
         <Title>TicTacToe</Title>
         <Status>{this.state.status}</Status>
-        <Game>
+        <GameWrapper>
           <TicTacToe updateStatus={this.updateStatus} />
-        </Game>
+        </GameWrapper>
         <A href="">Source code</A>
       </Fragment>
     );

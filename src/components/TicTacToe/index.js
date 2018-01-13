@@ -18,10 +18,11 @@ class TicTacToe extends Component {
   }
 
   updateCell(index) {
+    const { gameFinished, cells } = this.state;
+    if (gameFinished || cells[index] !== "") return;
+
     this.setState(prevState => {
       const cells = prevState.cells.slice();
-      if (cells[index] !== "") return prevState;
-      if (this.state.gameFinished) return prevState;
 
       cells[index] = prevState.player;
 

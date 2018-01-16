@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 const Cell = styled.div`
-  background: ${props =>
-    props.altColor ? "rgba(207, 156, 122, 0.4)" : "rgb(207, 156, 122)"};
+  background: ${props => {
+    if (props.winner) return "#a9ff87";
+    if (props.altColor) return "rgba(207, 156, 122, 0.4)";
+    return "rgb(207, 156, 122)";
+  }};
   margin: 1px;
   padding: 1em;
   transition: 0.15s transform;

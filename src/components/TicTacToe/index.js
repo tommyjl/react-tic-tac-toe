@@ -26,10 +26,10 @@ class TicTacToe extends Component {
 
       cells[index] = prevState.player;
 
-      const playerHasWon = this.checkForWinner(cells);
-      if (playerHasWon) {
+      const winnerCells = this.findWinnerCells(cells);
+      if (winnerCells) {
         this.updateStatus(`${this.state.player} is the winner!`);
-        return { cells, gameFinished: true };
+        return { cells, gameFinished: true, winnerCells };
       }
 
       const player = prevState.player === "X" ? "O" : "X";
@@ -39,7 +39,7 @@ class TicTacToe extends Component {
     });
   }
 
-  checkForWinner(cells) {
+  findWinnerCells(cells) {
     const check = (cells, firstCell, secondCell, thirdCell) => {
       if (cells[firstCell] === "") return false;
       if (
@@ -56,15 +56,21 @@ class TicTacToe extends Component {
     const rules = [...rows, ...columns, ...diagonals];
 
     for (let i = 0; i < rules.length; i++) {
-      if (check(cells, ...rules[i])) return true;
+      if (check(cells, ...rules[i])) return rules[i];
     }
 
-    return false;
+    return undefined;
   }
 
   render() {
-    const { cells } = this.state;
-    return <Grid cells={cells} updateCell={this.updateCell} />;
+    const { cells, winnerCells } = this.state;
+    return (
+      <Grid
+        cells={cells}
+        updateCell={this.updateCell}
+        winnerCells={winnerCells}
+      />
+    );
   }
 }
 

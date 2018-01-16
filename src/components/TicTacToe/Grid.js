@@ -15,10 +15,15 @@ const GridStyle = styled.div`
   width: 90%;
 `;
 
-const Grid = ({ cells, updateCell }) => (
+const Grid = ({ cells, updateCell, winnerCells }) => (
   <GridStyle>
     {cells.map((text, index) => (
-      <Cell key={index} onClick={() => updateCell(index)} altColor={index % 2}>
+      <Cell
+        key={index}
+        onClick={() => updateCell(index)}
+        altColor={index % 2}
+        winner={winnerCells && winnerCells.includes(index)}
+      >
         {text}
       </Cell>
     ))}

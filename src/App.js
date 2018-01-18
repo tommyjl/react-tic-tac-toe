@@ -47,12 +47,19 @@ const Status = styled.h2`
 class App extends Component {
   constructor() {
     super();
-    this.state = { status: undefined };
+    this.state = { status: undefined, playAgainstAi: false };
     this.updateStatus = this.updateStatus.bind(this);
+    this.toggleAi = this.toggleAi.bind(this);
   }
 
   updateStatus(message) {
     this.setState({ status: message });
+  }
+
+  toggleAi() {
+    this.setState(prevState => ({
+      playAgainstAi: !prevState.playAgainstAi
+    }));
   }
 
   render() {
@@ -61,7 +68,10 @@ class App extends Component {
         <Title>TicTacToe</Title>
         <Status>{this.state.status}</Status>
         <GameWrapper>
-          <TicTacToe updateStatus={this.updateStatus} />
+          <TicTacToe
+            playAgainstAi={this.state.playAgainstAi}
+            updateStatus={this.updateStatus}
+          />
         </GameWrapper>
         <Button onClick={this.toggleAi}>Play against AI</Button>
         <ReloadPageButton text="Clear board" />

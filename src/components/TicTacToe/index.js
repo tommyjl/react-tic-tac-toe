@@ -42,6 +42,30 @@ class TicTacToe extends Component {
         gameIsFinished
       };
     });
+
+    if (this.props.playAgainstAi) {
+      this.setState(prevState => {
+        const { board, playerIsCross } = prevState;
+
+        const aiMove = ttt.getAIMove(board);
+        const aiNextBoard = ttt.play(false, aiMove, board);
+        const winnerCells = ttt.getWinner(aiNextBoard);
+        const gameIsFinished = !!winnerCells;
+
+        if (gameIsFinished) {
+          this.updateStatus(`${playerIsCross ? "X" : "O"} won!`);
+        } else {
+          this.updateStatus(`Next: ${playerIsCross ? "O" : "X"}`);
+        }
+
+        return {
+          board: aiNextBoard,
+          winnerCells,
+          playerIsCross: !playerIsCross,
+          gameIsFinished
+        };
+      });
+    }
   }
 
   render() {

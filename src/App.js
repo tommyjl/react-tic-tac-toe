@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from "react";
 import styled from "styled-components";
 import TicTacToe from "./components/TicTacToe";
-import ReloadPageButton from "./components/ReloadPageButton";
+import { Button, ReloadPageButton } from "./components/Button";
 
 const Title = styled.h1`
   color: rgb(131, 79, 44);
@@ -63,6 +63,7 @@ class App extends Component {
         <GameWrapper>
           <TicTacToe updateStatus={this.updateStatus} />
         </GameWrapper>
+        <Button onClick={this.toggleAi}>Play against AI</Button>
         <ReloadPageButton text="Clear board" />
         <A href="https://github.com/tommyjl/react-tic-tac-toe">Source code</A>
       </Fragment>

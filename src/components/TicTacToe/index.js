@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Grid from "./Grid";
-import ttt from "./TicTacToe";
+import * as ttt from "./TicTacToe";
 
 class TicTacToe extends Component {
   constructor(props) {

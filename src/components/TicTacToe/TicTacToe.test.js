@@ -1,4 +1,4 @@
-import ttt from "./TicTacToe";
+import * as ttt from "./TicTacToe";
 
 describe("TicTacToe", () => {
   describe("newBoard()", () => {

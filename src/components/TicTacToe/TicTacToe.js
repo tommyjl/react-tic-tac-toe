@@ -1,5 +1,11 @@
+export const moves = {
+  EMPTY: "",
+  X: "X",
+  O: "O"
+};
+
 export function newBoard() {
-  return Array(9).fill("");
+  return Array(9).fill(moves.EMPTY);
 }
 
 export function checkIfEmpty(position, board) {
@@ -8,7 +14,7 @@ export function checkIfEmpty(position, board) {
 
 export function play(isCross, position, board) {
   const newBoard = board.slice();
-  newBoard[position] = isCross ? "X" : "O";
+  newBoard[position] = isCross ? moves.X : moves.O;
   return newBoard;
 }
 

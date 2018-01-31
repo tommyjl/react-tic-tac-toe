@@ -18,11 +18,11 @@ describe("TicTacToe", () => {
   describe("checkIfEmpty(position, board)", () => {
     const board = ttt.newBoard();
 
-    it("returns false if the position is occupied", () => {
+    it("returns true if the position is empty", () => {
       expect(ttt.checkIfEmpty(3, board)).toBe(true);
     });
 
-    it("returns true if the position is not occupied", () => {
+    it("returns false if the position is not empty", () => {
       const nonEmptyBoard = ttt.play(true, 4, board);
       expect(ttt.checkIfEmpty(4, nonEmptyBoard)).toBe(false);
     });

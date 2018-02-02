@@ -78,6 +78,7 @@ class TicTacToe extends Component {
   }
 
   toggleBot() {
+    this.clearBoard();
     this.setState(state => {
       return { useBot: !state.useBot };
     });

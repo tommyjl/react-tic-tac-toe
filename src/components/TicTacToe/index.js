@@ -1,7 +1,9 @@
 import React, { Component } from "react";
-import Grid from "./Grid";
+import { Grid } from "./components";
 import { newBoard, checkIfEmpty, play, getWinner } from "./TicTacToe";
 import { getBotMove } from "./Bot";
+import { Button } from "../Button";
+import Flexbox from "../Flexbox";
 
 class TicTacToe extends Component {
   constructor(props) {
@@ -72,11 +74,15 @@ class TicTacToe extends Component {
   render() {
     const { board, winnerCells } = this.state;
     return (
-      <Grid
-        cells={board}
-        updateCell={this.updateCell}
-        winnerCells={winnerCells}
-      />
+      <Flexbox>
+        <Grid
+          cells={board}
+          updateCell={this.updateCell}
+          winnerCells={winnerCells}
+        />
+        <Button>Toggle AI</Button>
+        <Button>Clear board</Button>
+      </Flexbox>
     );
   }
 }

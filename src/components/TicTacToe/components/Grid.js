@@ -9,10 +9,15 @@ const GridStyle = styled.div`
   display: grid;
   grid-auto-rows: 1fr;
   grid-template-columns: 1fr 1fr 1fr;
-  height: 90%;
-  margin: 5%;
+  height: 80vw;
+  margin: 15px;
   padding: 25px;
-  width: 90%;
+  width: 80vw;
+
+  @media (min-width: 800px) {
+    height: 700px;
+    width: 700px;
+  }
 `;
 
 const Grid = ({ cells, updateCell, winnerCells }) => (

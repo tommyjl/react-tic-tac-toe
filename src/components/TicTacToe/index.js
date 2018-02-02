@@ -25,6 +25,7 @@ class TicTacToe extends Component {
     this.state = getInitialState();
     this.updateCell = this.updateCell.bind(this);
     this.toggleBot = this.toggleBot.bind(this);
+    this.clearBoard = this.clearBoard.bind(this);
   }
 
   updateCell(index) {
@@ -82,6 +83,12 @@ class TicTacToe extends Component {
     });
   }
 
+  clearBoard() {
+    this.setState(state => {
+      return { ...getInitialState(), useBot: state.useBot };
+    });
+  }
+
   render() {
     const { board, winnerCells } = this.state;
     return (
@@ -94,7 +101,7 @@ class TicTacToe extends Component {
         <Button highlighted={this.state.useBot} onClick={this.toggleBot}>
           Toggle Bot
         </Button>
-        <Button>Clear board</Button>
+        <Button onClick={this.clearBoard}>Clear board</Button>
       </Flexbox>
     );
   }

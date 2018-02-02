@@ -10,7 +10,8 @@ function getInitialState() {
     board: newBoard(),
     playerIsCross: true,
     gameIsFinished: false,
-    winnerCells: undefined
+    winnerCells: undefined,
+    useBot: false
   };
 
   return { ...initialState };
@@ -23,6 +24,7 @@ class TicTacToe extends Component {
     this.updateStatus("Next: X");
     this.state = getInitialState();
     this.updateCell = this.updateCell.bind(this);
+    this.toggleBot = this.toggleBot.bind(this);
   }
 
   updateCell(index) {
@@ -49,7 +51,7 @@ class TicTacToe extends Component {
       };
     });
 
-    if (this.props.playAgainstAi) {
+    if (this.state.useBot) {
       this.setState(prevState => {
         const { board, playerIsCross } = prevState;
 
@@ -74,6 +76,12 @@ class TicTacToe extends Component {
     }
   }
 
+  toggleBot() {
+    this.setState(state => {
+      return { useBot: !state.useBot };
+    });
+  }
+
   render() {
     const { board, winnerCells } = this.state;
     return (
@@ -83,7 +91,9 @@ class TicTacToe extends Component {
           updateCell={this.updateCell}
           winnerCells={winnerCells}
         />
-        <Button>Toggle AI</Button>
+        <Button highlighted={this.state.useBot} onClick={this.toggleBot}>
+          Toggle Bot
+        </Button>
         <Button>Clear board</Button>
       </Flexbox>
     );

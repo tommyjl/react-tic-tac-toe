@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 
 const Button = styled.div`
@@ -9,11 +8,9 @@ const Button = styled.div`
   user-select: none;
   margin: 5px;
 
-  &:active {
+  ${props => props.highlighted && "background: white;"} &:active {
     transform: translateY(2px);
   }
 `;
 
-export default function(props) {
-  return <Button {...props} />;
-}
+export default Button;

@@ -5,20 +5,23 @@ import { getBotMove } from "./Bot";
 import { Button } from "../Button";
 import Flexbox from "../Flexbox";
 
+function getInitialState() {
+  const initialState = {
+    board: newBoard(),
+    playerIsCross: true,
+    gameIsFinished: false,
+    winnerCells: undefined
+  };
+
+  return { ...initialState };
+}
+
 class TicTacToe extends Component {
   constructor(props) {
     super(props);
-
     this.updateStatus = props.updateStatus;
     this.updateStatus("Next: X");
-
-    this.state = {
-      board: newBoard(),
-      playerIsCross: true,
-      gameIsFinished: false,
-      winnerCells: undefined
-    };
-
+    this.state = getInitialState();
     this.updateCell = this.updateCell.bind(this);
   }
 
